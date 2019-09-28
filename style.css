@@ -12,12 +12,27 @@ body {
   height: 500px;
 }
 
+.banner {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+}
+
+.banner p {
+  position: relative;
+  top: 10px;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 60px;
+  color: #333333;
+}
+
 #resultText {
   padding-top: 90px;
 }
-/* #resultWindow {
-  border: 3px solid #007bff;
-} */
+#resultWindow {
+  padding: 30px;
+}
 #showResult {
   font-size: 50px;
 }
