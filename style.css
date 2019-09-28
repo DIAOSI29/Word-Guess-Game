@@ -1,0 +1,23 @@
+body {
+  color: #007bff;
+}
+
+#gameBody {
+  margin: 10px 0;
+  border-top: 3px solid #007bff;
+  border-bottom: 3px solid #007bff;
+}
+
+.row {
+  height: 500px;
+}
+
+#resultText {
+  padding-top: 90px;
+}
+/* #resultWindow {
+  border: 3px solid #007bff;
+} */
+#showResult {
+  font-size: 50px;
+}

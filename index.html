@@ -10,11 +10,12 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./style.css" />
 
     <title>Word Guess Game</title>
   </head>
   <body>
-    <div class="container-fluid text-center d-flex flex-row">
+    <div class="container-fluid text-center d-flex flex-row mt-2">
       <div
         class="heading text-center d-flex flex-row p-3"
         style="border:3px solid #007bff; border-radius: 15px;"
@@ -23,6 +24,19 @@
           Word Guess Game
           <span class="badge bg-secondary" style="color:white">Tian Qin</span>
         </h1>
+      </div>
+    </div>
+    <div id="gameBody">
+      <div class="row d-flex justify-content-around ">
+        <div class="col-3" id="resultText">
+          <h2>Good guess! It is a</h2>
+          <br />
+
+          <p class="text-lg" id="showResult">???</p>
+        </div>
+        <div class="col-8" id="resultWindow">
+          <img id="result" src="" class="img-fluid" alt="" />
+        </div>
       </div>
     </div>
 
