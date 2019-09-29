@@ -36,18 +36,35 @@
     <div id="gameBody">
       <div class="row d-flex justify-content-around ">
         <div class="col-3">
-          <h2 id="resultText">Good guess! It is a</h2>
+          <h2 id="resultText">Guess Which Animal Is Behind The Scene?</h2>
           <br />
 
           <p class="text-lg" id="showResult">???</p>
         </div>
         <div class="col-8" id="resultWindow">
-          <img id="result" src="" class="img-fluid" alt="" />
+          <img
+            id="resultImage"
+            src="./Images/cover.jpg"
+            class="img-fluid"
+            alt="Animals Behind The Scene"
+          />
         </div>
       </div>
     </div>
 
-    <div class="container-fluid"></div>
+    <div class="container-fluid">
+      <div class="col-10 d-flex resultPanel">
+        Steps Left:
+        <p class="col-1 align-baseline" id="stepsLeft">13</p>
+        Current Wins:
+        <p class="col-1" id="currentWins"></p>
+        Letters Guessed:
+        <p class="col-9" id="lettersGuessed"></p>
+        Games Remaining:
+        <p class="col-1" id="gamesRemaining"></p>
+      </div>
+    </div>
+
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

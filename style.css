@@ -1,3 +1,7 @@
+. {
+  box-sizing: border-box;
+}
+
 body {
   color: #007bff;
 }
@@ -32,7 +36,24 @@ body {
 }
 #resultWindow {
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
 #showResult {
   font-size: 50px;
+}
+
+#resultImage {
+  max-height: 440px;
+}
+
+.resultPanel {
+  display: grid;
+  font-size: 20px;
+  align-items: flex-start;
+}
+.resultPanel p {
+  color: #333333;
+  font-size: 50px;
+  align-items: baseline;
 }
