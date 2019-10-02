@@ -30,16 +30,16 @@
         </h1>
       </div>
       <div class="banner d-flex flex-fill justify-content-around">
-        <p id="bannerText flex-fill">Press Any Button To Start Playing!</p>
+        <p id="bannerText">Press Any Button To Start Playing!</p>
       </div>
     </div>
     <div id="gameBody">
       <div class="row d-flex justify-content-around ">
         <div class="col-3">
-          <h2 id="resultText">Guess Which Animal Is Behind The Scene?</h2>
+          <h2 id="resultText"></h2>
           <br />
 
-          <p class="text-lg" id="showResult">???</p>
+          <p class="text-lg" id="showResult"></p>
         </div>
         <div class="col-8" id="resultWindow">
           <img
@@ -55,7 +55,7 @@
     <div class="container-fluid">
       <div class="col-10 d-flex resultPanel">
         Steps Left:
-        <p class="col-1 align-baseline" id="stepsLeft">15</p>
+        <p class="col-1 align-baseline" id="stepsLeft"></p>
         Current Wins:
         <p class="col-1" id="currentWins"></p>
         Letters Guessed:
@@ -65,6 +65,7 @@
       </div>
     </div>
 
+    <script src="./game.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -80,6 +81,5 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="/game.js"></script>
   </body>
 </html>
