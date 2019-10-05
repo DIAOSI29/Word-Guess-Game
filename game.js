@@ -3,7 +3,7 @@ var bannerText = "Press Any Button for A New Game!";
 //set up initial state of the game//
 var isGameOn = false;
 //set up info panel text//
-var resultText = "Guess Which Animal Is Behind The Scene ?";
+var resultText = "";
 //set up initial steps left//
 var stepsLeft = 5;
 //set up initial current wins//
@@ -67,6 +67,7 @@ function checkingResult(userTyped) {
   var guessRight = false;
   //when game starts change the banner//
   bannerText = "GAME STARTED! JUST ENJOY!";
+  resultText = "Guess Which Animal Is Behind The Scene ?";
   userInput = userTyped.toLowerCase();
 
   if (!isGameOn) {
@@ -100,7 +101,7 @@ function checkingResult(userTyped) {
 //function for game lose//
 function gameLose() {
   resultArray = [];
-  bannerText = "Please Try Again!";
+  bannerText = "Try Another Round!";
   stepsLeft = 5;
   animalIndex = 0;
   currentWins = 0;
@@ -132,10 +133,11 @@ function gameWin() {
   letterFailed = [];
   stepsLeft = 0;
   gameRemaining = 5;
+  currentWins++;
   animalIndex = 0;
   resultText = "Congratulations! You Won!";
   bannerText = "You Are Too Smart For This Game!";
-  game();
+
   showStats();
 }
 //game progress control//
