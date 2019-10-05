@@ -13,7 +13,7 @@ var letterFailed = [];
 //set up games remaining//
 var gameRemaining = 4;
 //set up initial animal on guess (non-visible//
-var animalArray = ["bear", "elephant", "dolphin", "penguin"];
+var animalArray = ["bear", "dolphin", "elephant", "penguin"];
 //index of animal to be guessed//
 var animalIndex = 0;
 //set up initial animal on guess (invisible)//
@@ -21,12 +21,14 @@ var resultArray = [];
 //set up initial animal on guess (visible)//
 var result = resultArray.join(" ");
 //function for changing game status//
+var animalToBeGuessed = animalArray[animalIndex];
 bannerTextContent = document.getElementById("bannerText");
 bannerTextContent.innerHTML = bannerText;
 
 function game() {
+  animalToBeGuessed = animalArray[animalIndex];
   //set up animal to be guessed//
-  var animalToBeGuessed = animalArray[animalIndex];
+
   for (var i = 0; i < animalToBeGuessed.length; i++) {
     resultArray.push("_");
   }
@@ -42,81 +44,125 @@ function game() {
   bannerTextContent.innerHTML = bannerText;
   resultTextContent.innerHTML = resultText;
   resultContent.innerHTML = resultArray.join(""); //why I can not use "result" here?//
+  letterFailedContent.innerHTML = letterFailed;
   stepsLeftContent.innerHTML = stepsLeft;
   currentWinsContent.innerHTML = currentWins;
-  lettersFailedContent.innerHTML = letterFailed;
+  //lettersFailedContent.innerHTML = letterFailed;
   gamesRemainingContent.innerHTML = gameRemaining;
 }
 
+//function for updating all relevant game stats//
+function showStats() {
+  bannerTextContent.innerHTML = bannerText;
+  resultTextContent.innerHTML = resultText;
+  resultContent.innerHTML = resultArray.join(""); //why I can not use "result" here?//
+  letterFailedContent.innerHTML = letterFailed;
+  stepsLeftContent.innerHTML = stepsLeft;
+  currentWinsContent.innerHTML = currentWins;
+  //lettersFailedContent.innerHTML = letterFailed;
+  gamesRemainingContent.innerHTML = gameRemaining;
+}
 //function for checking user guess//
 function checkingResult(userTyped) {
+  var guessRight = false;
   //when game starts change the banner//
   bannerText = "GAME STARTED! JUST ENJOY!";
   userInput = userTyped.toLowerCase();
+
   if (!isGameOn) {
+    isGameOn = true;
     game();
-  } else if (isGameOn == "true") {
+  } else {
     for (var i = 0; i < animalToBeGuessed.length; i++) {
-      if (animalToBeGuessed[i] === userInput) {
-        resultArray[i] = userInput;
-      } else {
-        letterFailed.push(userInput);
-        stepsLeft--;
+      if (animalToBeGuessed[i] == userInput) {
+        guessRight = true;
       }
+    }
+
+    console.log("test3");
+    if (guessRight) {
+      for (var i = 0; i < animalToBeGuessed.length; i++) {
+        if (animalToBeGuessed[i] == userInput) {
+          resultArray[i] = userInput;
+          resultContent.innerHTML = resultArray.join("");
+          showStats();
+        }
+      }
+    } else {
+      letterFailed.push(userInput);
+      stepsLeft--;
+
+      showStats();
     }
   }
 }
 
 //function for game lose//
 function gameLose() {
+  resultArray = [];
   bannerText = "Please Try Again!";
   stepsLeft = 5;
   animalIndex = 0;
   currentWins = 0;
   letterFailed = [];
   isGameOn = false;
-  game();
+  console.log("Or here2!");
+
+  showStats();
 }
 
 //function for jump to next game//
 function getNextGame() {
+  resultArray = [];
   bannerText = "Good Work!";
   stepsLeft = 5;
   letterFailed = [];
   animalIndex++;
   gameRemaining--;
   currentWins++;
+  console.log("From here!");
   game();
+
+  showStats();
 }
 //function for game end//
 function gameWin() {
+  console.log("endofthegame");
   isGameOn = false;
   animalArray = [];
-  letterFailed = "None";
-  stepsLeft = "None";
-  gameRemaining = "None";
+  letterFailed = [];
+  stepsLeft = 0;
+  gameRemaining = 5;
+  animalIndex = 0;
   resultText = "Congratulations! You Won!";
   bannerText = "You Are Too Smart For This Game!";
+  game();
+  showStats();
 }
 //game progress control//
 function gameProgress() {
   if (stepsLeft === 0) {
     gameLose();
+    showStats();
   } else if (
     animalIndex < animalArray.length - 1 &&
-    animalToBeGuessed === animalArray.join("")
+    animalToBeGuessed === resultArray.join("")
   ) {
+    console.log("hey");
     getNextGame();
+
+    showStats();
   } else if (
-    (animalIndex =
-      animalArray.length - 1 && animalToBeGuessed === animalArray.join(""))
+    animalIndex === animalArray.length - 1 &&
+    animalToBeGuessed === resultArray.join("")
   ) {
     gameWin();
+    showStats();
   }
 }
 
 document.onkeyup = function(event) {
-  var userInput = event.key;
-  checkingResult(userInput);
+  var userGuess = event.key;
+  checkingResult(userGuess);
   gameProgress();
 };
