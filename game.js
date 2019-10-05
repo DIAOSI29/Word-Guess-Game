@@ -30,6 +30,7 @@ var resultImg = $("#resultImage");
 var animalSrc = [];
 
 function game() {
+  $("#resultImg").attr("src", "./Images/cover.jpg");
   animalToBeGuessed = animalArray[animalIndex];
   //set up animal to be guessed//
 
@@ -72,6 +73,7 @@ function checkingResult(userTyped) {
   //when game starts change the banner//
   bannerText = "GAME STARTED! JUST ENJOY!";
   resultText = "Guess Who Is The Next Animal ?";
+
   userInput = userTyped.toLowerCase();
 
   if (!isGameOn) {
@@ -84,7 +86,6 @@ function checkingResult(userTyped) {
       }
     }
 
-    console.log("test3");
     if (guessRight) {
       for (var i = 0; i < animalToBeGuessed.length; i++) {
         if (animalToBeGuessed[i] == userInput) {
@@ -111,7 +112,6 @@ function gameLose() {
   letterFailed = [];
   isGameOn = false;
   console.log("Or here2!");
-
   showStats();
 }
 
@@ -132,14 +132,13 @@ function getNextGame() {
   ];
   $(resultImg).attr("src", animalSrc[animalIndex]);
   animalIndex++;
-  console.log("From here!");
+
   game();
 
   showStats();
 }
 //function for game end//
 function gameWin() {
-  console.log("endofthegame");
   isGameOn = false;
   letterFailed = [];
   stepsLeft = 0;
@@ -161,7 +160,6 @@ function gameProgress() {
     animalIndex < animalArray.length - 1 &&
     animalToBeGuessed === resultArray.join("")
   ) {
-    console.log("hey");
     getNextGame();
 
     showStats();
