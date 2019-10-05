@@ -24,6 +24,10 @@ var result = resultArray.join(" ");
 var animalToBeGuessed = animalArray[animalIndex];
 bannerTextContent = document.getElementById("bannerText");
 bannerTextContent.innerHTML = bannerText;
+// using jquery to grab img element in html//
+var resultImg = $("#resultImage");
+//create array for game sucess images//
+var animalSrc = [];
 
 function game() {
   animalToBeGuessed = animalArray[animalIndex];
@@ -67,7 +71,7 @@ function checkingResult(userTyped) {
   var guessRight = false;
   //when game starts change the banner//
   bannerText = "GAME STARTED! JUST ENJOY!";
-  resultText = "Guess Which Animal Is Behind The Scene ?";
+  resultText = "Guess Who Is The Next Animal ?";
   userInput = userTyped.toLowerCase();
 
   if (!isGameOn) {
@@ -92,7 +96,6 @@ function checkingResult(userTyped) {
     } else {
       letterFailed.push(userInput);
       stepsLeft--;
-
       showStats();
     }
   }
@@ -101,7 +104,7 @@ function checkingResult(userTyped) {
 //function for game lose//
 function gameLose() {
   resultArray = [];
-  bannerText = "Try Another Round!";
+  bannerText = "Just Try Again!";
   stepsLeft = 5;
   animalIndex = 0;
   currentWins = 0;
@@ -118,9 +121,17 @@ function getNextGame() {
   bannerText = "Good Work!";
   stepsLeft = 5;
   letterFailed = [];
-  animalIndex++;
+
   gameRemaining--;
   currentWins++;
+  animalSrc = [
+    "./Images/bear.jpg",
+    "./Images/dolphin.jpg",
+    "./Images/elephant.jpg",
+    "./Images/penguin.jpg"
+  ];
+  $(resultImg).attr("src", animalSrc[animalIndex]);
+  animalIndex++;
   console.log("From here!");
   game();
 
@@ -134,6 +145,7 @@ function gameWin() {
   stepsLeft = 0;
   gameRemaining = 5;
   currentWins++;
+  $(resultImg).attr("src", animalSrc[animalIndex]);
   animalIndex = 0;
   resultText = "Congratulations! You Won!";
   bannerText = "You Are Too Smart For This Game!";
