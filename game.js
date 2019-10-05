@@ -30,7 +30,6 @@ var resultImg = $("#resultImage");
 var animalSrc = [];
 
 function game() {
-  $("#resultImg").attr("src", "./Images/cover.jpg");
   animalToBeGuessed = animalArray[animalIndex];
   //set up animal to be guessed//
 
@@ -78,6 +77,7 @@ function checkingResult(userTyped) {
 
   if (!isGameOn) {
     isGameOn = true;
+    $(resultImg).attr("src", "./Images/cover.jpg");
     game();
   } else {
     for (var i = 0; i < animalToBeGuessed.length; i++) {
@@ -111,7 +111,6 @@ function gameLose() {
   currentWins = 0;
   letterFailed = [];
   isGameOn = false;
-  console.log("Or here2!");
   showStats();
 }
 
