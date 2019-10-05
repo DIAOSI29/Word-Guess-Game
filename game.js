@@ -129,7 +129,6 @@ function getNextGame() {
 function gameWin() {
   console.log("endofthegame");
   isGameOn = false;
-  animalArray = [];
   letterFailed = [];
   stepsLeft = 0;
   gameRemaining = 5;
